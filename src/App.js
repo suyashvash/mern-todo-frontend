@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import {Home, NavBar,AllTask, Login, Register, Create, Detail} from '../src/components'
+import {Home, NavBar,AllTask, Login, Register, Create, Detail, Find} from '../src/components'
 import Update from './components/update';
 
 function App() {
@@ -37,8 +37,8 @@ function App() {
       case '/all':
         return <AllTask/>
 
-      // case '/find':
-      //   return <Find/>
+      case '/find':
+        return <Find/>
       default:
         <Home />
         break;

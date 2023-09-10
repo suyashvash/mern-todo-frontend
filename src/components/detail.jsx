@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import "./index.css";
 import { Button } from "react-bootstrap";
+import moment from "moment";
 
 export default function Detail() {
   useEffect(() => {
@@ -84,6 +85,10 @@ export default function Detail() {
               <span className="detail-title">Assigned To</span>
               <span className="detail-value">{task.assignedTo}</span>
             </div>
+            <div className="detail-holder">
+              <span className="detail-title">Date</span>
+              <span className="detail-value">{moment(task.date).format('YYYY-MM-DD')}</span>
+            </div>
           </div>
           <div className="detail-wrapper">
             <div className="detail-holder">
@@ -100,6 +105,7 @@ export default function Detail() {
               <span className="detail-title">Status</span>
               <span className="detail-value">{task.status}</span>
             </div>
+            
           </div>
         </div>
         <br />

@@ -2,6 +2,7 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import "./index.css";
+import moment from "moment";
 
 export default function Update() {
   React.useEffect(() => {
@@ -34,9 +35,9 @@ export default function Update() {
         setStatus(res[0].status.toLowerCase());
         setAssignedTo(res[0].assignedTo);
         setPriority(res[0].priority.toLowerCase());
-        setDate(res[0].date);
+        setDate(moment(res[0].date).format("YYYY-MM-DD"));
         setIsLoading(false);
-        console.log(res[0]);
+
       })
       .catch((err) => {
         setIsLoading(false);
@@ -78,7 +79,7 @@ export default function Update() {
       assignedTo,
       priority: priority.toLowerCase(),
       date,
-      completed: status.toLowerCase() == "completed" ? true : false,
+      completed: status.toLowerCase() == "done" ? true : false,
     };
 
     setIsLoading(true);
@@ -99,7 +100,7 @@ export default function Update() {
         setIsLoading(false);
         alert("Task Updated Successfully");
         console.log(res);
-        // window.location.href = "/all";
+        window.location.href = "/all";
       })
       .catch((err) => {
         console.log(err.response);
@@ -156,7 +157,7 @@ export default function Update() {
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Status</Form.Label>
               <div className="button-grp">
-                {["New", "Pending", "In Progress"].map((item, index) => (
+                {["New", "Pending", "InProgress","Done"].map((item, index) => (
                   <Button
                     disabled={isLoading}
                     style={{ marginRight: 10 }}
